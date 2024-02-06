@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Hello, WebXR! - A-Frame</title>
+      <meta name="description" content="Hello, WebXR! - A-Frame">
+      <!--  note we are using 1.1.0 as most recent -->
+      <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    </head>
+    <body>
+      <!-- A-Frame scene - al A-Frame entities must go in the scene -->
+      <a-scene>
+        <!-- geometry documentation: https://github.com/aframevr/aframe/blob/v0.8.2/docs/components/geometry.md -->
+        <!-- material documentation: https://github.com/aframevr/aframe/blob/v0.8.2/docs/components/material.md -->      
+
+        <!-- note three ways of defining color: hexidecimal, rgb, and from a list of pre-defined colours -->
+        <!-- see here for more information: http://www.unm.edu/~tbeach/IT145/color.html -->
+        <a-entity id="box"
+                  position="0 2 -3"
+                  geometry="primitive:box; width:3.0; height:4.0; depth:1.0" 
+                  material="color:#FF0000;"></a-entity>
+
+        <a-entity id="plane"
+                  position="0 0 0"
+                  rotation="-90 0 0"
+                  scale="10 10 10"
+                  geometry="primitive:plane; width:1.0; height:1.0;" 
+                  material="color:rgb(0, 255, 0);"></a-entity>
+
+          <a-entity id="sphere"
+                    position="0 4 -3"
+                    geometry="primitive:sphere; radius:1.0" 
+                    material="color:blue;"></a-entity>
+      </a-scene>
+    </body>
+</html>
