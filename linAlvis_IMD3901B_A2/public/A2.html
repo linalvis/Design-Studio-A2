@@ -5,6 +5,7 @@
       <meta name="description" content="Hello, WebXR! - A-Frame">
       <!--  note we are using 1.1.0 as most recent -->
       <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+      <script src = "js/instantiateSphere.js"></script>
     </head>
     <body>
       <!-- A-Frame scene - al A-Frame entities must go in the scene -->
@@ -14,25 +15,49 @@
 
         <!-- note three ways of defining color: hexidecimal, rgb, and from a list of pre-defined colours -->
         <!-- see here for more information: http://www.unm.edu/~tbeach/IT145/color.html -->
-        <a-entity id="box"
-                  position="0 2 -3"
-                  geometry="primitive:box; width:3.0; height:4.0; depth:1.0" 
-                  material="color:#FF0000;"></a-entity>
+
+
+        <!-- adding a camera -->
+        <a-entity position = "0 1.6 2" camera wasd-controls look-controls>
+          <!-- cursor creates a raycast interaction system where we cast a ray into the scene and check for 
+          intersections with facts of certain objects (ex. buttons)
+              - far = ignore all objects farther than the cursor from x amount 
+              - interval: after how many milliseconds do we check for intersections again 
+              - objects: what css selector do we use for which objects we check
+            -->
+          <a-entity cursor = "rayOrigin: mouse;" raycaster = "far: 20; interval: 200; objects:.interactive;"></a-entity>
+        </a-entity>
 
         <a-entity id="plane"
                   position="0 0 0"
                   rotation="-90 0 0"
                   scale="10 10 10"
                   geometry="primitive:plane; width:2.0; height:2.0;" 
-                  material="color:rgb(0, 255, 0);"></a-entity>
+                  material="color:rgb(0, 255, 0);">
+        </a-entity>
 
-        <a-entity id="sphere"
-                    position="0 4 -3"
-                    geometry="primitive:sphere; radius:1.0" 
-                    material="color:blue;"></a-entity>
+        <a-entity id = "ring"
+                  geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;"
+                  position="0 1 -5"
+                  scale = "2 2 2"
+                  material="side: double; color:blue;"
+                  rotation = "-90 0 0">
+        </a-entity>
 
-        <a-entity geometry="primitive: ring; radiusInner: 0.5; radiusOuter: 1"
-                    material="side: double"></a-entity>
+        <a-entity id = "universal_button">
+          <a-entity class = "button interactive" position = "0 0.6 0"
+                    instantiate-sphere
+                    geometry = "primitive:cylinder; radius: 0.15; height: 0.2;"
+                    material = "color:rgb(255, 100, 100);"
+                    animation__mouseenter = "property:material.color; type: color; to:rgb(255,0,0); startEvents:mouseenter; dur:200;"
+                    animation__mouseleave = "property:material.color; type: color; to:rgb(255, 100, 100); startEvents:mouseleave; dur:200;"
+                    animation__mouseclick = "property:position.y; from: 0.55; to: 0.6; startEvents:click; dur:300;">
+          </a-entity>
+          
+          <a-entity position= "0 0.3 0" geometry = "primitive:box; width: 0.5; depth: 0.5; height: 0.6;"
+                    material = "color: white;">
+          </a-entity>
+        </a-entity>
 
       </a-scene>
     </body>
