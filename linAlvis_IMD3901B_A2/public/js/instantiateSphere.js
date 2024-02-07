@@ -20,6 +20,7 @@ AFRAME.registerComponent('instantiate-sphere', {
 
     const CONTEXT_AF = this; 
     CONTEXT_AF.sphereExists = false; 
+    CONTEXT_AF.cursor = document.querySelector('#cursor'); 
 
 
 
@@ -40,11 +41,12 @@ AFRAME.registerComponent('instantiate-sphere', {
         sphere.setAttribute('position', '0 3 -3'); 
         sphere.setAttribute('geometry', 'primitive:sphere; radius: 1.0'); 
         sphere.setAttribute('material', 'color:blue'); 
+        sphere.setAttribute('manipulate', ''); 
 
         document.querySelector('a-scene').appendChild(sphere); 
 
         CONTEXT_AF.sphereExists = true; 
-        console.log(sphere.getAttribute('id')); 
+        console.log(sphere.getAttribute('select-sphere')); 
         console.log('sphere instantiate'); 
 
 
