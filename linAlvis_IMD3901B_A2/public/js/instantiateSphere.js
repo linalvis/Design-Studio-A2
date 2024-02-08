@@ -38,7 +38,9 @@ AFRAME.registerComponent('instantiate-sphere', {
         //instantiate sphere
         let sphere = document.createElement('a-entity'); 
         sphere.setAttribute('id', 'mySphere'); 
+        sphere.setAttribute('class', 'interactive'); 
         sphere.setAttribute('position', '0 3 -3'); 
+        sphere.setAttribute('scale', '1 1 1'); 
         sphere.setAttribute('geometry', 'primitive:sphere; radius: 1.0'); 
         sphere.setAttribute('material', 'color:blue'); 
         sphere.setAttribute('manipulate', ''); 

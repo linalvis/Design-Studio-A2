@@ -11,15 +11,15 @@
     <body>
       <!-- A-Frame scene - al A-Frame entities must go in the scene -->
       <a-scene>
-        <!-- geometry documentation: https://github.com/aframevr/aframe/blob/v0.8.2/docs/components/geometry.md -->
-        <!-- material documentation: https://github.com/aframevr/aframe/blob/v0.8.2/docs/components/material.md -->      
-
-        <!-- note three ways of defining color: hexidecimal, rgb, and from a list of pre-defined colours -->
-        <!-- see here for more information: http://www.unm.edu/~tbeach/IT145/color.html -->
+        <a-assets timeout = "10000"> 
+          <audio id = "soulicious_music" src = "assets/Soulicious - Dyalla.mp3" preload = "auto" crossorigin="anonymous"></audio>
+        </a-assets>
 
 
         <!-- adding a camera -->
-        <a-entity position = "0 1.6 2" camera wasd-controls look-controls>
+        <a-entity position = "0 1.6 2" camera wasd-controls look-controls >
+        <!-- <a-entity position = "0 1.6 2" camera wasd-controls look-controls> -->
+
           <!-- cursor creates a raycast interaction system where we cast a ray into the scene and check for 
           intersections with facts of certain objects (ex. buttons)
               - far = ignore all objects farther than the cursor from x amount 
@@ -28,6 +28,8 @@
             -->
           <a-entity id = "cursor" cursor = "rayOrigin: mouse;" raycaster = "far: 20; interval: 200; objects:.interactive;"></a-entity>
         </a-entity>
+
+        <a-entity sound="src: #soulicious_music; autoplay: false;"></a-entity>
 
         <a-entity id="plane"
                   position="0 0 0"
