@@ -31,20 +31,30 @@
 
         <a-entity sound="src: #soulicious_music; autoplay: false;"></a-entity>
 
-        <a-entity id="plane"
-                  position="0 0 0"
-                  rotation="-90 0 0"
-                  scale="10 10 10"
-                  geometry="primitive:plane; width:2.0; height:2.0;" 
-                  material="color:rgb(0, 255, 0);">
+        <!-- Set Up the Floor Object -->
+        <a-entity id="plane" position="0 0 0" rotation="-90 0 0" scale="10 10 10" 
+                  geometry="primitive:plane; width:2.0; height:2.0;"  material="color:rgb(0, 255, 0);">
         </a-entity>
 
-        <a-entity id = "ring"
-                  geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;"
-                  position="0 1 -5"
-                  scale = "2 2 2"
-                  material="side: double; color:blue;"
-                  rotation = "-90 0 0">
+
+        <a-entity id = "ringGroup">
+          <a-entity class = "ring"
+                    geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="0 1.5 -5" 
+                    scale = "1.5 1.5 1.5" material="side: double; color:blue;" rotation = "-90 0 0"
+                    animation = "property:position; from: 0 1.5 -5; to: 0 1.75 -5; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad;">
+          </a-entity>
+
+          <a-entity class = "ring"
+                    geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="0 1 -5"
+                    scale = "2 2 2" material="side: double; color:blue;" rotation = "-90 0 0"
+                    animation = "property:position; from: 0 1 -5; to: 0 1.25 -5; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 500;">
+          </a-entity>
+
+          <a-entity class = "ring"
+                    geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="0 0.5 -5"
+                    scale = "2.5 2.5 2.5" material="side: double; color:blue;" rotation = "-90 0 0"
+                    animation = "property:position; from: 0 0.5 -5; to: 0 0.75 -5; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 1000">
+          </a-entity>
         </a-entity>
 
         <a-entity id = "universal_button">

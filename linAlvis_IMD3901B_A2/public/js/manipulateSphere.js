@@ -11,8 +11,8 @@ AFRAME.registerComponent('manipulate', {
     CONTEXT_AF.audio1 = document.querySelector('#soulicious_music'); 
     CONTEXT_AF.audio1.load(); 
 
-    CONTEXT_AF.mySphere.setAttribute('animation__startPulse', {property: 'scale', to: '1.2 1.2 1.2', dur: 670, 
-                                                    loop: true, easing: 'linear', enabled: false}); 
+    CONTEXT_AF.mySphere.setAttribute('animation__startPulse', {property: 'scale', from: '1 1 1', to: '1.2 1.2 1.2', dur: 333, 
+                                                    dir: 'alternate', loop: true, easing: 'easeInOutElastic', elasticity: '10000', enabled: false}); 
     CONTEXT_AF.mySphere.setAttribute('animation__returnToDefault', {property: 'scale', to: '1 1 1', dur: 500, 
                                                     easing: 'linear', enabled: false}); 
 
