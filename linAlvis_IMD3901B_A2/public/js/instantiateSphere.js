@@ -43,7 +43,7 @@ AFRAME.registerComponent('instantiate-sphere', {
         sphere.setAttribute('scale', '1 1 1'); 
         sphere.setAttribute('geometry', 'primitive:sphere; radius: 1.0'); 
         sphere.setAttribute('material', 'color:blue'); 
-        sphere.setAttribute('manipulate', ''); 
+        sphere.setAttribute('manipulate', 'shapeType:sphere'); 
 
         document.querySelector('a-scene').appendChild(sphere); 
 
