@@ -14,16 +14,18 @@ AFRAME.registerComponent('manipulate', {
 
     if (CONTEXT_AF.data.shapeType == 'sphere') {
       CONTEXT_AF.myObject = document.querySelector('#mySphere'); 
-      CONTEXT_AF.audioFile = document.querySelector('#soulicious_music');    
-      songBPM = 333; 
+      CONTEXT_AF.audioFile = document.querySelector('#OmarApollo');    
+      songBPM = 316; 
     }
     else if (CONTEXT_AF.data.shapeType == 'octa') {
       CONTEXT_AF.myObject = document.querySelector('#myOcta'); 
-      CONTEXT_AF.audioFile = document.querySelector('#soulicious_music');    
+      CONTEXT_AF.audioFile = document.querySelector('#Blackpink');   
+      songBPM = 230;  
     }
     else if (CONTEXT_AF.data.shapeType == 'tetra') {
       CONTEXT_AF.myObject = document.querySelector('#myTetra'); 
-      CONTEXT_AF.audioFile = document.querySelector('#soulicious_music');    
+      CONTEXT_AF.audioFile = document.querySelector('#BadBunny');  
+      songBPM = 266;    
     }
 
     CONTEXT_AF.audioFile.load(); 
