@@ -27,7 +27,7 @@ AFRAME.registerComponent('manipulate', {
       CONTEXT_AF.audioFile = document.querySelector('#BadBunny');  
       songBPM = 266;    
     }
-
+    CONTEXT_AF.audioFile.setAttribute('loop', 'true'); 
     CONTEXT_AF.audioFile.load(); 
     CONTEXT_AF.myObject.setAttribute('animation__startPulse', {property: 'scale', from: '1 1 1', to: '1.2 1.2 1.2', dur: songBPM, 
                                                     dir: 'alternate', loop: true, easing: 'easeInOutElastic', elasticity: '10000', enabled: false}); 
