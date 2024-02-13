@@ -1,7 +1,12 @@
+//instantiateObject listens for the click of a button and instantiates a object to the scene 
+//it requires the object shape that it is instantiating, which will make a object appear with certain properties 
+//it is a attribute 'instantiate-object' that is added onto the button component 
+
 'use strict' 
 
 AFRAME.registerComponent('instantiate-object', {
   schema: {
+    // add attributse so you can pass shape type in the HTML file 
     shapeType: {type: 'string', default: 'sphere'}
   }, 
   multiple:false, 
@@ -18,6 +23,7 @@ AFRAME.registerComponent('instantiate-object', {
     var objectPosAnimated = '0 3 -5'; 
     var objectManipulate = 'shapeType:sphere'; 
 
+    // if the object is a sphere
     if (CONTEXT_AF.data.shapeType == 'sphere') {
         objectID = "#mySphere";
         objectIDAttribute = 'mySphere';  
@@ -28,6 +34,7 @@ AFRAME.registerComponent('instantiate-object', {
         objectManipulate = 'shapeType:sphere'; 
     }
 
+    //if the object is a octahedron 
     else if (CONTEXT_AF.data.shapeType == 'octa') {
         objectID = "#myOcta";
         objectIDAttribute = 'myOcta';  
@@ -38,6 +45,7 @@ AFRAME.registerComponent('instantiate-object', {
         objectManipulate = 'shapeType:octa'; 
     }
 
+    //if the object is a tetrahedron 
     else if (CONTEXT_AF.data.shapeType == 'tetra') {
         objectID = "#myTetra";
         objectIDAttribute = 'myTetra';  
@@ -48,18 +56,19 @@ AFRAME.registerComponent('instantiate-object', {
         objectManipulate = 'shapeType:tetra'; 
     }
 
-    //this.el (or CONTEXT_AL.ef) refers to the element that this component is attached to 
+    //listen for when the button has been clicked 
+    //if an object already has been instantiated, then delete the object 
     CONTEXT_AF.el.addEventListener('click', function() {
       if (CONTEXT_AF.objectExists === true) {
-        //delete sphere
-        CONTEXT_AF.selectSphere = document.querySelector(objectID); 
-        CONTEXT_AF.selectSphere.remove(); 
+        //delete object
+        CONTEXT_AF.selectObject = document.querySelector(objectID); 
+        CONTEXT_AF.selectObject.remove(); 
 
         console.log('object delete'); 
         CONTEXT_AF.objectExists = false; 
       }
       else {
-        //instantiate sphere
+        //instantiate new object with the attributes corresponding to the shapeType 
         let newObject = document.createElement('a-entity'); 
         newObject.setAttribute('id', objectIDAttribute); 
         newObject.setAttribute('class', 'interactive'); 
@@ -69,11 +78,13 @@ AFRAME.registerComponent('instantiate-object', {
         newObject.setAttribute('material', objectColor); 
         newObject.setAttribute('manipulate', objectManipulate); 
 
+        //append it to the a-scene 
         document.querySelector('a-scene').appendChild(newObject); 
 
         CONTEXT_AF.objectExists = true; 
         console.log('object instantiate'); 
 
+        //as the object gets instantiated, add a floating animation to it 
         newObject.setAttribute('animation__appear', {property: 'position', from: objectPos, to: objectPosAnimated, dur: 1400, 
                             easing: 'easeOutQuad'}); 
 

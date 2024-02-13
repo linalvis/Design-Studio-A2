@@ -7,10 +7,12 @@
       <script src = "js/manipulateObject.js"></script>
       <script src = "js/instantiateObject.js"></script>
       <script src="js/aframe-environment-component.min.js"></script> <!-- aframe-environment-component 1.3.4 -->
-      <script src="https://cdn.rawgit.com/mrturck/aframe-joystick/master/joystick.min.js"></script>
+      <script src="https://cdn.rawgit.com/mrturck/aframe-joystick/master/joystick.min.js"></script> <!-- Using Joystick Component -->
     </head>
-    <body>
 
+
+    <body>
+      <!-- Add a joystick control for mobile movement  -->
       <a-scene joystick>
 
         <!-- Set Up the Assets -->
@@ -21,12 +23,14 @@
           <a-asset-item id = "speaker_model" response-type = "arraybuffer" src = "assets/speakers_low_poly/speakerModel.glb"></a-asset-item>
         </a-assets>
 
+        <!-- Place the speakers in the scene  -->
         <a-entity position = "0 -0.5 -12" rotation = "0 -90 0" scale = "5 5 5" gltf-model = "#speaker_model"></a-entity>
         <a-entity position = "15 -0.5 3" rotation = "0 -180 0" scale = "5 5 5" gltf-model = "#speaker_model"></a-entity>
         <a-entity position = "-15 -0.5 3" rotation = "0 0 0" scale = "5 5 5" gltf-model = "#speaker_model"></a-entity>
 
         <!-- adding a camera -->
         <a-camera id = "camera" position = "0 1.6 17" camera wasd-controls look-controls >
+          <!-- Add a cursor that interacts with objects with the class .interactive -->
           <a-entity id = "cursor" cursor = "rayOrigin: mouse;" raycaster = "far: 20; interval: 200; objects:.interactive;"></a-entity>
           <!-- Adding Lights  -->
           <a-entity position = "0.5 -0.5 0" light = "type: spot; intensity: 1.4; angle: 40; penumbra: 0.3; castShadow: true; shadowBias: -0.005">
@@ -39,6 +43,7 @@
                   geometry="primitive:circle; width:2.0; height:2.0;"  material="color:rgb(0, 255, 0);">
         </a-entity>
 
+        <!-- Place Intro Plaque with User Instructions-->
         <a-entity id = "IntroPlaque_Left" position = "-2 0.1 12" rotation = "-30 0 0" scale = "0.7 0.7 0.7">
           <a-entity position = "0 0 -0.11"
                     geometry = "primitive:box; width: 3.0; height: 1.2; depth: 0.2;"
@@ -53,6 +58,7 @@
           </a-entity>
         </a-entity>
 
+        <!-- Place Intro Plaque with Interaction Instructions-->
         <a-entity id = "IntroPlaque_Right" position = "2 0.1 12" rotation = "-30 0 0" scale = "0.7 0.7 0.7">
           <a-entity position = "0 0 -0.11"
                     geometry = "primitive:box; width: 3.0; height: 1.2; depth: 0.2;"
@@ -69,26 +75,25 @@
 
         <!-- Set up the Sphere Group -->
         <a-entity id = "sphere">
+          <!-- Group of Floating Rings -->
           <a-entity id = "ringGroup_sphere">
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="0 1.5 -5" 
                       scale = "1.5 1.5 1.5" material="side: double; color:#acfce4; emissive:#acfce4;" rotation = "-90 0 0"
                       animation = "property:position; from: 0 1.5 -5; to: 0 1.75 -5; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad;">
             </a-entity>
-
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="0 1 -5"
                       scale = "2 2 2" material="side: double; color:#4fff90; emissive:#4fff90;" rotation = "-90 0 0"
                       animation = "property:position; from: 0 1 -5; to: 0 1.25 -5; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 500;">
             </a-entity>
-
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="0 0.5 -5"
                       scale = "2.5 2.5 2.5" material="side: double; color:#acfce4; emissive:#acfce4;" rotation = "-90 0 0"
                       animation = "property:position; from: 0 0.5 -5; to: 0 0.75 -5; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 1000">
             </a-entity>
           </a-entity>
-
+          <!-- Button for Instantiating Object -->
           <a-entity id = "universal_button">
             <a-entity class = "button interactive" position = "0 0.6 0"
                       instantiate-object = "shapeType:sphere"
@@ -102,7 +107,7 @@
                       material = "color: white;">
             </a-entity>
           </a-entity>
-
+          <!-- Plaque with Song Info -->
           <a-entity id = "Omar_Plaque" position = "0 0.1 -2" rotation = "-30 0 0" scale = "0.7 0.7 0.7">
             <a-entity position = "0 0 -0.11"
                       geometry = "primitive:box; width: 3.0; height: 1.2; depth: 0.2;"
@@ -119,28 +124,29 @@
           </a-entity>
         </a-entity>
 
+
+
         <!-- Set Up the Octahedron Group -->
         <a-entity id = "octahedron">
+          <!-- Group of Floating Rings -->
           <a-entity id = "ringGroup_octa">
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="9 1.5 3" 
                       scale = "1.5 1.5 1.5" material="side: double; color:#fc0a8b; emissive:#fc0a8b;" rotation = "-90 0 0"
                       animation = "property:position; from: 9 1.5 3; to: 9 1.75 3; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad;">
             </a-entity>
-
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="9 1 3"
                       scale = "2 2 2" material="side: double; color:#2b2b2b; emissive:#2b2b2b;" rotation = "-90 0 0"
                       animation = "property:position; from: 9 1 3; to: 9 1.25 3; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 500;">
             </a-entity>
-
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="9 0.5 3"
                       scale = "2.5 2.5 2.5" material="side: double; color:#fc0a8b; emissive:#fc0a8b;" rotation = "-90 0 0"
                       animation = "property:position; from: 9 0.5 3; to: 9 0.75 3; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 1000">
             </a-entity>
           </a-entity>
-
+          <!-- Button for Instantiating Object -->
           <a-entity id = "universal_button_octa">
             <a-entity class = "button interactive" position = "3 0.6 3"
                       instantiate-object = "shapeType:octa"
@@ -154,7 +160,7 @@
                       material = "color: white;">
             </a-entity>
           </a-entity>
-
+          <!-- Plaque with Song Info -->
           <a-entity id = "BlackPink_Plaque" position = "6 0.1 3" rotation = "-30 -90 0" scale = "0.7 0.7 0.7">
             <a-entity position = "0 0 -0.11"
                       geometry = "primitive:box; width: 3.0; height: 1.2; depth: 0.2;"
@@ -169,31 +175,32 @@
             </a-entity>
         </a-entity>
 
+
+
         <!-- Set Up the Tetrahedron Group -->
         <a-entity id = "tetrahedron">
+          <!-- Group of Floating Rings -->
           <a-entity id = "ringGroup_tetra">
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="-9 1.5 3" 
                       scale = "1.5 1.5 1.5" material="side: double; color:#a76afc; emissive:#a76afc;" rotation = "-90 0 0"
                       animation = "property:position; from: -9 1.5 3; to: -9 1.75 3; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad;">
             </a-entity>
-
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="-9 1 3"
                       scale = "2 2 2" material="side: double; color:#ffe24f; emissive:#ffe24f;" rotation = "-90 0 0"
                       animation = "property:position; from: -9 1 3; to: -9 1.25 3; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 500;">
             </a-entity>
-
             <a-entity class = "ring"
                       geometry="primitive: ring; radiusInner: 0.7; radiusOuter: 1; depth: 10.0;" position="-9 0.5 3"
                       scale = "2.5 2.5 2.5" material="side: double; color:#a76afc; emissive:#a76afc;" rotation = "-90 0 0"
                       animation = "property:position; from: -9 0.5 3; to: -9 0.75 3; dir: alternate; dur:1800; loop: true; easing: easeInOutQuad; delay: 1000">
             </a-entity>
           </a-entity>
-
+          <!-- Button for Instantiating Object -->
           <a-entity id = "universal_button_tetra">
             <a-entity class = "button interactive" position = "-3 0.6 3"
-                      instantiate-object = "shapeType:tetra"
+                      instantiate-object = "shapeType:tetra" 
                       geometry = "primitive:cylinder; radius: 0.15; height: 0.2;"
                       material = "color:#a76afc;"
                       animation__mouseenter = "property:material.color; type: color; to:#8d46f0; startEvents:mouseenter; dur:200;"
@@ -204,7 +211,7 @@
                       material = "color: white;">
             </a-entity>
           </a-entity>
-
+          <!-- Plaque with Song Info -->
           <a-entity id = "BadBunny_Plaque" position = "-6 0.1 3" rotation = "-30 90 0" scale = "0.7 0.7 0.7">
             <a-entity position = "0 0 -0.11"
                       geometry = "primitive:box; width: 3.0; height: 1.2; depth: 0.2;"
@@ -219,6 +226,7 @@
             </a-entity>
         </a-entity>
 
+        <!-- Set Up Background Environment  -->
         <a-entity environment="preset:starry"></a-entity>
 
       </a-scene>
