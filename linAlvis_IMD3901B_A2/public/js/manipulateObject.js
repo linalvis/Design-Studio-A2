@@ -11,6 +11,7 @@ AFRAME.registerComponent('manipulate', {
     CONTEXT_AF.myObject; 
     CONTEXT_AF.audioFile; 
     var songBPM = 0; 
+    var objectPos = "0 0 0"; 
 
     if (CONTEXT_AF.data.shapeType == 'sphere') {
       CONTEXT_AF.myObject = document.querySelector('#mySphere'); 
